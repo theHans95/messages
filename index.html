@@ -4,228 +4,513 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday Yana ✨</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg1:#f7f3ef; --bg2:#ece6df; --accent:#d8a7a0; --ink:#3a3a3a; --muted:#6f6a67; --card:#ffffffcc;
+      --bg1:#fff7f5;
+      --bg2:#f2e7e2;
+      --accent:#d8a7a0;
+      --accent2:#b97f78;
+      --ink:#3a3a3a;
+      --muted:#746b67;
+      --card:#ffffff;
     }
+
     *{box-sizing:border-box}
-    html,body{height:100%;}
-    body{margin:0; background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%); color:var(--ink); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;}
 
-    .wrap{display:grid; grid-template-columns: 1.1fr 1.3fr; min-height:100svh;}
-    @media (max-width: 900px){ .wrap{grid-template-columns: 1fr;}}
+    html,body{
+      margin:0;
+      min-height:100%;
+    }
 
-    /* LEFT: unlock panel */
-    .unlock{position:relative; padding:clamp(24px,4vw,48px); display:flex; align-items:center; justify-content:center; overflow:hidden;}
-    .orbit{position:absolute; inset:-10%; pointer-events:none; opacity:.6; filter: blur(1px);}
-    .dot{position:absolute; width:10px; height:10px; border-radius:999px; background:var(--accent); animation: float 12s ease-in-out infinite; opacity:.18}
-    .dot:nth-child(2){width:8px;height:8px;left:15%;top:60%;animation-duration:14s}
-    .dot:nth-child(3){width:6px;height:6px;left:70%;top:20%;animation-duration:10s}
-    .dot:nth-child(4){width:12px;height:12px;left:80%;top:75%;animation-duration:16s}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+    body{
+      background:
+        radial-gradient(circle at 20% 10%, #ffffff 0%, transparent 28%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+      color:var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      overflow-x:hidden;
+    }
 
-    .panel{width:min(560px,92vw); background:linear-gradient(180deg,#ffffffd6,#ffffffb8); border:1px solid #00000014; border-radius:20px; padding:28px 24px; box-shadow:0 20px 40px #00000014; backdrop-filter: blur(6px); text-align:center}
-    .title{font-family: Fraunces, serif; font-weight:400; letter-spacing:.3px; font-size: clamp(22px,2.3vw,28px); color:#2f2f2f}
-    .subtitle{margin:.35rem auto 1.2rem; color:var(--muted); max-width:36ch; font-size: clamp(14px,1.6vw,15px); line-height:1.5}
-    .inputRow{display:flex; gap:10px; margin-top:14px; justify-content:center}
+    .wrap{
+      min-height:100svh;
+      display:grid;
+      grid-template-columns:1fr 1.2fr;
+    }
+
+    @media(max-width:900px){
+      .wrap{grid-template-columns:1fr}
+    }
+
+    .unlock{
+      position:relative;
+      padding:clamp(24px,4vw,48px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .dot{
+      position:absolute;
+      border-radius:999px;
+      background:var(--accent);
+      opacity:.18;
+      animation:float 12s ease-in-out infinite;
+    }
+
+    .dot:nth-child(1){width:11px;height:11px;left:12%;top:18%}
+    .dot:nth-child(2){width:8px;height:8px;left:18%;top:70%;animation-duration:15s}
+    .dot:nth-child(3){width:7px;height:7px;left:78%;top:24%;animation-duration:10s}
+    .dot:nth-child(4){width:13px;height:13px;left:82%;top:76%;animation-duration:16s}
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-18px)}
+    }
+
+    .panel{
+      width:min(560px,92vw);
+      background:linear-gradient(180deg,#ffffffdd,#ffffffba);
+      border:1px solid #00000012;
+      border-radius:24px;
+      padding:30px 24px;
+      box-shadow:0 22px 50px #00000018;
+      backdrop-filter:blur(8px);
+      text-align:center;
+    }
+
+    .title{
+      font-family:Fraunces, serif;
+      font-weight:400;
+      font-size:clamp(26px,3vw,34px);
+      color:#2f2f2f;
+      margin-bottom:8px;
+    }
+
+    .subtitle{
+      margin:0 auto 20px;
+      color:var(--muted);
+      max-width:38ch;
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    .inputRow{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      margin-top:14px;
+    }
+
     .inputRow input{
-      appearance:none; outline:none; border:1px solid #0000001e; background:#ffffff; color:var(--ink);
-      border-radius:12px; padding:14px 16px; width:min(420px, 100%); font-size:15px; caret-color: var(--ink); box-shadow: 0 2px 8px #0000000e
+      outline:none;
+      border:1px solid #0000001e;
+      background:#fff;
+      color:var(--ink);
+      border-radius:14px;
+      padding:14px 16px;
+      width:min(390px,100%);
+      font-size:15px;
+      box-shadow:0 2px 8px #0000000e;
     }
-    .inputRow input::placeholder{color:#9a948f}
-    .inputRow input:focus{border-color: var(--accent); box-shadow: 0 0 0 3px #d8a7a022}
-    .btn{border:none; border-radius:12px; padding:12px 16px; background:var(--accent); color:#3a2f2c; font-weight:600; cursor:pointer; transition:.2s transform ease}
+
+    .inputRow input:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px #d8a7a033;
+    }
+
+    .btn{
+      border:none;
+      border-radius:14px;
+      padding:12px 16px;
+      background:var(--accent);
+      color:#3a2f2c;
+      font-weight:700;
+      cursor:pointer;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+
     .btn:hover{transform:translateY(-1px)}
-    .hint{margin-top:10px; color:var(--muted); font-size:12.5px}
 
-    /* RIGHT: letter card */
-    .letter{position:relative; display:flex; align-items:center; justify-content:center; padding:clamp(20px,4vw,60px); background: radial-gradient(900px 600px at 70% 20%, #f1ebe5 0%, #efe9e3 70%);}    
-    .card{width:min(760px,92vw); max-height:78dvh; overflow:auto; padding:clamp(22px,3.2vw,36px); background:#ffffff; color:#292a2e; border-radius:18px; box-shadow:0 24px 60px #0000001a; opacity:0; transform: translateY(12px) scale(.995); transition: .7s ease;}
-    .card.show{opacity:1; transform: translateY(0) scale(1)}
-    .card h1{font-family: Fraunces, serif; font-weight:400; font-size: clamp(22px,2.5vw,26px); margin:0 0 10px}
-    .card p{font-size: clamp(15px,1.7vw,16px); line-height:1.7; margin:12px 0}
-    .sig{margin-top:22px; font-style: italic; color:#444}
+    .hint{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:12.5px;
+    }
 
-    @media (max-width: 600px){
-      .panel{padding:20px 16px}
-      .subtitle{max-width:28ch}
-      .inputRow{flex-direction:column; gap:12px}
-      .inputRow input{width:100%; font-size:16px; padding:14px 16px}
-      .btn{width:100%; padding:14px 16px; font-size:16px}
+    .letter{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:clamp(20px,4vw,60px);
+      background:radial-gradient(900px 600px at 70% 20%, #fffaf8 0%, #efe3dd 75%);
+      overflow:hidden;
+    }
+
+    .stage{
+      width:min(760px,92vw);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:620px;
+      position:relative;
+    }
+
+    .envelopeWrap{
+      position:absolute;
+      width:min(360px,82vw);
+      height:240px;
+      cursor:pointer;
+      transition:.8s ease;
+      z-index:3;
+    }
+
+    .envelope{
+      position:relative;
+      width:100%;
+      height:100%;
+      filter:drop-shadow(0 24px 35px #00000024);
+    }
+
+    .env-back{
+      position:absolute;
+      inset:0;
+      background:#f3c7c1;
+      border-radius:16px;
+      overflow:hidden;
+    }
+
+    .env-back:before,
+    .env-back:after{
+      content:"";
+      position:absolute;
+      width:70%;
+      height:70%;
+      background:#e6aaa3;
+      bottom:-30%;
+      transform:rotate(45deg);
+    }
+
+    .env-back:before{left:-22%}
+    .env-back:after{right:-22%}
+
+    .env-paper{
+      position:absolute;
+      left:8%;
+      bottom:20%;
+      width:84%;
+      height:68%;
+      background:#fff;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      font-family:Fraunces, serif;
+      font-size:20px;
+      color:#5a4744;
+      transition:1s ease;
+      z-index:1;
+    }
+
+    .env-front{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,#efb8b1,#d99b94);
+      clip-path:polygon(0 38%, 50% 72%, 100% 38%, 100% 100%, 0 100%);
+      border-radius:16px;
+      z-index:2;
+    }
+
+    .env-flap{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:58%;
+      background:#f0b8b1;
+      clip-path:polygon(0 0,100% 0,50% 100%);
+      transform-origin:top;
+      transition:1s ease;
+      z-index:4;
+      border-radius:16px 16px 0 0;
+    }
+
+    .seal{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-20%);
+      width:54px;
+      height:54px;
+      background:#fff7f5;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:5;
+      box-shadow:0 8px 18px #00000018;
+      font-size:24px;
+      transition:.5s ease;
+    }
+
+    .envelopeWrap.opened{
+      opacity:0;
+      transform:translateY(60px) scale(.92);
+      pointer-events:none;
+      transition-delay:1.2s;
+    }
+
+    .envelopeWrap.opened .env-flap{
+      transform:rotateX(180deg);
+    }
+
+    .envelopeWrap.opened .env-paper{
+      transform:translateY(-115px);
+    }
+
+    .envelopeWrap.opened .seal{
+      opacity:0;
+      transform:translate(-50%,-20%) scale(.6);
+    }
+
+    .card{
+      width:min(760px,92vw);
+      max-height:78dvh;
+      overflow:auto;
+      padding:clamp(24px,3.4vw,40px);
+      background:var(--card);
+      color:#292a2e;
+      border-radius:22px;
+      box-shadow:0 26px 70px #0000001f;
+      opacity:0;
+      transform:translateY(18px) scale(.98);
+      transition:.9s ease;
+    }
+
+    .card.show{
+      opacity:1;
+      transform:translateY(0) scale(1);
+    }
+
+    .card h1{
+      font-family:Fraunces, serif;
+      font-weight:400;
+      font-size:clamp(25px,3vw,34px);
+      margin:0 0 14px;
+      color:#2d2928;
+    }
+
+    .card p{
+      font-size:clamp(15px,1.7vw,16px);
+      line-height:1.78;
+      margin:13px 0;
+    }
+
+    .card strong{
+      color:#8c5f59;
+    }
+
+    .sig{
+      margin-top:26px;
+      font-style:italic;
+      color:#4a403e;
+    }
+
+    .tapNote{
+      position:absolute;
+      bottom:42px;
+      font-size:13px;
+      color:var(--muted);
+      z-index:2;
+      text-align:center;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    @media(max-width:600px){
+      .panel{padding:22px 16px}
+      .inputRow{flex-direction:column}
+      .btn{width:100%;padding:14px 16px}
       .letter{padding:16px}
-      .card{max-height:70svh; padding:18px; border-radius:16px}
-    }
-    @media (max-width: 380px){
-      .title{font-size:20px}
-      .subtitle{font-size:13px}
-      .card p{font-size:14px}
-    }
-    @media (prefers-reduced-motion: reduce){
-      .dot{animation:none}
-      .card{transition:none}
+      .stage{min-height:560px}
+      .card{max-height:72svh;padding:20px;border-radius:18px}
+      .tapNote{bottom:20px}
     }
   </style>
 </head>
+
 <body>
-  <!-- audio (muted autoplay + fade-in on unlock) -->
   <audio id="bgm" preload="auto" playsinline loop muted>
-    <source src="SampaiJadiDebu.mp3" type="audio/mpeg" />
+    <source src="SampaiJadiDebu.mp3" type="audio/mpeg"/>
   </audio>
 
   <div class="wrap">
-    <!-- LEFT / UNLOCK -->
     <section class="unlock">
-      <div class="orbit">
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-      </div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+
       <div class="panel">
         <div class="title">Knock knockkkk 💕</div>
-<div class="subtitle">
-A special birthday letter is waiting for you. Type your name to open it ✨
-</div>
+        <div class="subtitle">
+          A special birthday letter is waiting for you. Type your name to open it ✨
+        </div>
+
         <div class="inputRow">
           <input id="key" type="text" placeholder="Type your name..." autocomplete="off"/>
           <button id="openBtn" class="btn">Open Birthday Letter 💕</button>
         </div>
-        <div class="hint">
-For Yana ✨ | 29th Birthday
-</div>
+
+        <div class="hint">For Yana ✨ | 29th Birthday</div>
       </div>
     </section>
 
-    <!-- RIGHT / LETTER -->
     <section class="letter">
-      <article id="card" class="card" aria-live="polite">
+      <div class="stage">
+        <div id="envelopeWrap" class="envelopeWrap hidden">
+          <div class="envelope">
+            <div class="env-back"></div>
+            <div class="env-paper">Dear Yana ✨</div>
+            <div class="env-front"></div>
+            <div class="env-flap"></div>
+            <div class="seal">💕</div>
+          </div>
+        </div>
 
-<h1>Dear Yana ✨</h1>
+        <div id="tapNote" class="tapNote hidden">
+          Tap the envelope to open your birthday letter ✨
+        </div>
 
-<p>Here’s a special birthday message from Hans 🐯</p>
+        <article id="card" class="card" aria-live="polite">
+          <h1>Dear Yana ✨</h1>
 
-<p>Alhamdulillah, 29 years old already.</p>
+          <p>Here’s a special birthday message from Hans 🐯</p>
 
-<p>From 2019 until now, if I had to describe you in just 3 words, I think they would be:</p>
+          <p>Alhamdulillah, 29 years old already. From 2019 until now, if I had to describe you in just 3 words, I think they would be: <strong>Proud, Strong, and Comfort.</strong></p>
 
-<p><strong>Proud. Strong. Comfort.</strong></p>
+          <p><strong>First of all, I’m really proud of you.</strong></p>
 
-<p><strong>First of all, Proud.</strong></p>
+          <p>Alhamdulillah, akhirnya berjaya juga dapat kereta sendiri. I know there were so many things you had to go through and sacrifice just to reach that moment. Siap kena berjuang lagi sebab nak nombor plat Q tu juga hahaha. But honestly, it suits you.</p>
 
-<p>Alhamdulillah, akhirnya berjaya juga dapat kereta sendiri. I know there were so many things you had to go through and sacrifice just to reach that moment.</p>
+          <p>We both know how much you love Sarawak, especially Kuching. So congratulations. Maybe one day you can bawa I jalan-jalan naik kereta tu pula 😘</p>
 
-<p>Siap kena berjuang lagi sebab nak nombor plat Q tu juga hahaha.</p>
+          <p><strong>Yang kedua, Strong.</strong></p>
 
-<p>But honestly, it suits you.</p>
+          <p>I rasa you antara orang yang paling kuat yang I pernah kenal. Bila orang lain susah, you selalu ada. Bila orang lain perlukan bantuan, you selalu cuba bantu. Walaupun kadang-kadang diri sendiri tengah penat, you tetap cuba kuatkan diri.</p>
 
-<p>We both know how much you love Sarawak, especially Kuching.</p>
+          <p>Tapi Yana, orang yang kuat pun perlukan rehat tau.</p>
 
-<p>So congratulations. Maybe one day you can bawa I jalan-jalan naik kereta tu pula 😘</p>
+          <p>Jaga kesihatan betul-betul okay? You selalu sakit kepala kan. Tidur awal, cukupkan rehat, makan elok-elok. Janganlah bercinta sampai tak cukup tidur pula hahaha 🙃</p>
 
-<p><strong>Yang kedua, Strong.</strong></p>
+          <p>Your body and your heart deserve to be taken care of too.</p>
 
-<p>I rasa you antara orang yang paling kuat yang I pernah kenal.</p>
+          <p><strong>And lastly, Comfort.</strong></p>
 
-<p>Bila orang lain susah, you selalu ada.</p>
+          <p>Honestly, I tak tahu macam mana nak explain benda ni. Tapi bila I fikir pasal perkataan “selesa”, “tenang” dan “rasa macam ada tempat untuk balik bercerita”, somehow I akan teringat dekat you.</p>
 
-<p>Bila orang lain perlukan bantuan, you selalu cuba bantu.</p>
+          <p>I rasa itu satu hadiah yang Allah bagi dekat you yang tak semua orang ada.</p>
 
-<p>Walaupun kadang-kadang diri sendiri tengah penat, you tetap cuba kuatkan diri.</p>
+          <p>You know what?</p>
 
-<p>Tapi Yana, orang yang kuat pun perlukan rehat tau.</p>
+          <p>I rasa arwah Atok mesti bangga sangat tengok princess dia hari ni. His little princess dah membesar jadi seorang wanita yang kuat, baik hati dan banyak pencapaian.</p>
 
-<p>Jaga kesihatan betul-betul okay?</p>
+          <p>Jadi jangan sesekali rasa diri you rendah atau tak cukup baik tau.</p>
 
-<p>You selalu sakit kepala kan.</p>
+          <p>Sebab dari dulu sampai sekarang, I selalu nampak banyak benda yang baik dalam diri you ❤️</p>
 
-<p>Tidur awal, cukupkan rehat, makan elok-elok.</p>
+          <p>And most importantly, I doakan you sentiasa bahagia. Bahagia yang buat hati tenang. Bahagia yang buat you rasa dihargai. Bahagia yang bukan datang sekali-sekala, sebulan sekali. But bahagia yang tak menyebabkan you rasa serabut.</p>
 
-<p>Janganlah bercinta sampai tak cukup tidur pula hahaha 🙃</p>
+          <p>Sebab honestly, you deserve that kind of happiness. A happiness that feels complete ❤️</p>
 
-<p>Your body and your heart deserve to be taken care of too.</p>
+          <p>Enjoy your birthday and celebration okay.</p>
 
-<p><strong>And lastly, Comfort.</strong></p>
+          <p>Nanti kalau I balik sana, kita celebrate ❤️</p>
 
-<p>Honestly, I tak tahu macam mana nak explain benda ni.</p>
+          <p>I know sekarang kita dah tak boleh jadi kawan macam dulu sebabbb hahaha 🙄</p>
 
-<p>Tapi bila I fikir pasal perkataan selesa, tenang dan rasa macam ada tempat untuk balik bercerita, somehow I akan teringat dekat you.</p>
+          <p>But one thing yang I harap tak berubah..</p>
 
-<p>I rasa itu satu hadiah yang Allah bagi dekat you yang tak semua orang ada.</p>
+          <p>Kalau satu hari nanti hidup terasa berat, atau you cuma perlukan seseorang untuk mendengar, I masih dekat sini.</p>
 
-<p>You know what?</p>
+          <p>Just one call away 💕</p>
 
-<p>I rasa arwah Atok mesti bangga sangat tengok princess dia hari ni.</p>
-
-<p>His little princess dah membesar jadi seorang wanita yang kuat, baik hati dan banyak pencapaian.</p>
-
-<p>Jadi jangan sesekali rasa diri you rendah atau tak cukup baik tau.</p>
-
-<p>Sebab dari dulu sampai sekarang, I selalu nampak banyak benda yang baik dalam diri you ❤️</p>
-
-<p>And most importantly, I doakan you sentiasa bahagia.</p>
-
-<p>Bahagia yang buat hati tenang.</p>
-
-<p>Bahagia yang buat you rasa dihargai.</p>
-
-<p>Bahagia yang bukan datang sekali-sekala.</p>
-
-<p>But bahagia yang tak menyebabkan you rasa serabut.</p>
-
-<p>Sebab honestly, you deserve that kind of happiness.</p>
-
-<p>A happiness that feels complete ❤️</p>
-
-<p>Enjoy your birthday and celebration okay.</p>
-
-<p>Nanti kalau I balik sana, kita celebrate ❤️</p>
-
-<p>I know sekarang kita dah tak boleh jadi kawan macam dulu sebabbb hahaha 🙄</p>
-
-<p>But one thing yang I harap tak berubah...</p>
-
-<p>Kalau satu hari nanti hidup terasa berat, atau you cuma perlukan seseorang untuk mendengar, I masih dekat sini.</p>
-
-<p>Just one call away 💕</p>
-
-<p class="sig">
-Happy 29th Birthday, Yana ✨<br><br>
-— Hans🐯, once yours
-</p>
-
-</article>
+          <p class="sig">
+            Happy 29th Birthday, Yana ✨<br><br>
+            — Hans 🐯
+          </p>
+        </article>
+      </div>
     </section>
   </div>
 
   <script>
-    // audio: fade in when unlocking
     const bgm = document.getElementById('bgm');
     const card = document.getElementById('card');
     const key = document.getElementById('key');
     const openBtn = document.getElementById('openBtn');
+    const envelopeWrap = document.getElementById('envelopeWrap');
+    const tapNote = document.getElementById('tapNote');
 
     function fadeInAudio(){
       bgm.volume = 0;
-      bgm.muted = false; // unmute
-      try { bgm.currentTime = 0; bgm.play(); } catch(e) {}
+      bgm.muted = false;
+
+      const playPromise = bgm.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+
       let v = 0;
-      const t = setInterval(()=>{ 
-        v += 0.05; 
-        bgm.volume = Math.min(1, v); 
-        if(v >= 1) clearInterval(t); 
-      }, 80);
+      const t = setInterval(() => {
+        v += 0.05;
+        bgm.volume = Math.min(0.75, v);
+        if (v >= 0.75) clearInterval(t);
+      }, 90);
     }
 
-    function unlock(){
-      card.classList.add('show');    // reveal letter
-      fadeInAudio();                 // start music
-      card.scrollTop = 0;
+    function showEnvelope(){
+      envelopeWrap.classList.remove('hidden');
+      tapNote.classList.remove('hidden');
+      fadeInAudio();
     }
 
-    function tryOpen(){ unlock(); }
+    function openEnvelope(){
+      envelopeWrap.classList.add('opened');
+      tapNote.classList.add('hidden');
+
+      setTimeout(() => {
+        card.classList.add('show');
+        card.scrollTop = 0;
+      }, 1600);
+    }
+
+    function tryOpen(){
+      showEnvelope();
+      openBtn.disabled = true;
+      openBtn.textContent = 'Letter is ready ✨';
+    }
 
     openBtn.addEventListener('click', tryOpen);
-    key.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ tryOpen(); }});
+
+    key.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter'){
+        tryOpen();
+      }
+    });
+
+    envelopeWrap.addEventListener('click', openEnvelope);
   </script>
 </body>
 </html>
