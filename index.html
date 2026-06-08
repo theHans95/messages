@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>for Yana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#f7f3ef; --bg2:#ece6df; --accent:#d8a7a0; --ink:#3a3a3a; --muted:#6f6a67; --card:#ffffffcc;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{margin:0; background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%); color:var(--ink); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;}
+
+    .wrap{display:grid; grid-template-columns: 1.1fr 1.3fr; min-height:100svh;}
+    @media (max-width: 900px){ .wrap{grid-template-columns: 1fr;}}
+
+    /* LEFT: unlock panel */
+    .unlock{position:relative; padding:clamp(24px,4vw,48px); display:flex; align-items:center; justify-content:center; overflow:hidden;}
+    .orbit{position:absolute; inset:-10%; pointer-events:none; opacity:.6; filter: blur(1px);}
+    .dot{position:absolute; width:10px; height:10px; border-radius:999px; background:var(--accent); animation: float 12s ease-in-out infinite; opacity:.18}
+    .dot:nth-child(2){width:8px;height:8px;left:15%;top:60%;animation-duration:14s}
+    .dot:nth-child(3){width:6px;height:6px;left:70%;top:20%;animation-duration:10s}
+    .dot:nth-child(4){width:12px;height:12px;left:80%;top:75%;animation-duration:16s}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+
+    .panel{width:min(560px,92vw); background:linear-gradient(180deg,#ffffffd6,#ffffffb8); border:1px solid #00000014; border-radius:20px; padding:28px 24px; box-shadow:0 20px 40px #00000014; backdrop-filter: blur(6px); text-align:center}
+    .title{font-family: Fraunces, serif; font-weight:400; letter-spacing:.3px; font-size: clamp(22px,2.3vw,28px); color:#2f2f2f}
+    .subtitle{margin:.35rem auto 1.2rem; color:var(--muted); max-width:36ch; font-size: clamp(14px,1.6vw,15px); line-height:1.5}
+    .inputRow{display:flex; gap:10px; margin-top:14px; justify-content:center}
+    .inputRow input{
+      appearance:none; outline:none; border:1px solid #0000001e; background:#ffffff; color:var(--ink);
+      border-radius:12px; padding:14px 16px; width:min(420px, 100%); font-size:15px; caret-color: var(--ink); box-shadow: 0 2px 8px #0000000e
+    }
+    .inputRow input::placeholder{color:#9a948f}
+    .inputRow input:focus{border-color: var(--accent); box-shadow: 0 0 0 3px #d8a7a022}
+    .btn{border:none; border-radius:12px; padding:12px 16px; background:var(--accent); color:#3a2f2c; font-weight:600; cursor:pointer; transition:.2s transform ease}
+    .btn:hover{transform:translateY(-1px)}
+    .hint{margin-top:10px; color:var(--muted); font-size:12.5px}
+
+    /* RIGHT: letter card */
+    .letter{position:relative; display:flex; align-items:center; justify-content:center; padding:clamp(20px,4vw,60px); background: radial-gradient(900px 600px at 70% 20%, #f1ebe5 0%, #efe9e3 70%);}    
+    .card{width:min(760px,92vw); max-height:78dvh; overflow:auto; padding:clamp(22px,3.2vw,36px); background:#ffffff; color:#292a2e; border-radius:18px; box-shadow:0 24px 60px #0000001a; opacity:0; transform: translateY(12px) scale(.995); transition: .7s ease;}
+    .card.show{opacity:1; transform: translateY(0) scale(1)}
+    .card h1{font-family: Fraunces, serif; font-weight:400; font-size: clamp(22px,2.5vw,26px); margin:0 0 10px}
+    .card p{font-size: clamp(15px,1.7vw,16px); line-height:1.7; margin:12px 0}
+    .sig{margin-top:22px; font-style: italic; color:#444}
+
+    @media (max-width: 600px){
+      .panel{padding:20px 16px}
+      .subtitle{max-width:28ch}
+      .inputRow{flex-direction:column; gap:12px}
+      .inputRow input{width:100%; font-size:16px; padding:14px 16px}
+      .btn{width:100%; padding:14px 16px; font-size:16px}
+      .letter{padding:16px}
+      .card{max-height:70svh; padding:18px; border-radius:16px}
+    }
+    @media (max-width: 380px){
+      .title{font-size:20px}
+      .subtitle{font-size:13px}
+      .card p{font-size:14px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .dot{animation:none}
+      .card{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- audio (muted autoplay + fade-in on unlock) -->
+  <audio id="bgm" preload="auto" playsinline loop muted>
+    <source src="SampaiJadiDebu.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="wrap">
+    <!-- LEFT / UNLOCK -->
+    <section class="unlock">
+      <div class="orbit">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="panel">
+        <div class="title">To the one I used to call my princess</div>
+        <div class="subtitle">Type your name to unlock this letter. If you’re reading this, thank you for once being home.</div>
+        <div class="inputRow">
+          <input id="key" type="text" placeholder="nickname… e.g. yana / sayang" autocomplete="off"/>
+          <button id="openBtn" class="btn">Open</button>
+        </div>
+        <div class="hint">Try <strong>“yana”</strong> — or just the name that feels right to you.</div>
+      </div>
+    </section>
+
+    <!-- RIGHT / LETTER -->
+    <section class="letter">
+      <article id="card" class="card" aria-live="polite">
+        <h1>To the one I used to call my princess, my cinta hati</h1>
+        <p>Maybe one day, bila I dah jadi the best version of myself, I’ll find my way back to you.</p>
+
+<p>I never thought I’d have to write this, because honestly, I still love you., dan you akan sentiasa jadi seseorang yang penting dalam hidup I.</p>
+
+<p>You were more than just someone I loved. You were my home, my peace, my comfort. You nampak semua sisi I : yang baik, yang teruk, yang hilang arah, ada masa I tak layak pun untuk disayangi. You percaya dekat I masa I sendiri pun tak yakin dengan diri sendiri.</p>
+
+<p>You were there through everything the hard times, the late nights, the moments I wanted to give up. Setiap kejayaan yang I capai hari ni, ada bahagian dari you dalam tu. Sebab you pernah jadi tulang belakang I, sumber kekuatan I.</p>
+
+<p>I tahu you tunggu I lama. You gave me time, love, patience and endless understanding. Tapi masa tu I belum ready. I was lost in my own mind, full of things I didn’t know how to fix. I was scared. Scared that if I came back too soon, I’d hurt you again. And I never wanted to see you in pain because of me.</p>
+
+<p>Sekarang I tahu you dah cuba buka hati untuk orang lain, and I faham. You deserve that. You deserve someone yang cintakan you dengan penuh keyakinan, who gives you peace, who never makes you doubt yourself.</p>
+
+<p>I nampak cara dia layan you, dan honestly, dia baik untuk you. She loves you softly, calmly, the way I never managed to. And I’m happy for you. You finally have the love you always deserved.</p>
+
+<p>I chose to undur diri buat sementara. Not because I stopped loving you, but because I love you enough to let you breathe, to let you find peace even if that peace no longer includes me.</p>
+
+<p>I minta maaf untuk semua sakit yang I pernah bagi. Untuk setiap kali I buat you menangis, setiap masa I buat you rasa tak cukup, setiap kali I gagal tunjukkan kasih dengan cara yang betul. You tak pernah deserve semua tu. You deserve the world, cinta yang terbaik, dan hati yang tak keliru.</p>
+
+<p>You’re just too perfect, Yana. Thank you sebab you selalu masak untuk I, sebab you tahu I kadang tak sempat makan atau tengah stress dekat office. I still remember bila you tiba-tiba hantar makanan yang you masak and I swear, that moment I rasa tenang. Makan masakan you buat I rasa macam you ada dengan I.</p>
+
+<p>Dulu masa I demam, you masakkan sup ayam untuk I. I suka sangat sup ayam you, sampai sekarang I masih ingat rasa dia. Bila I warded dulu, you datang jaga I tanpa banyak soal. You selalu ada, even bila I tak minta. And now that all of that is gone, I realize how much those moments meant to me. I lost something I can never replace.</p>
+
+<p>Yana, please know that you sangat-sangat bernilai dekat dunia ni. You’re kind, thoughtful, and full of love. And anyone who gets to have you in their life is really lucky. I just hope you never forget how special you are, and how much you’ve done for people, especially me.</p>
+
+<p>Kadang I terfikir macam mana kalau masa tu boleh untuk kita putar, if I had been ready. If I had known how to love without fear, tapi mungkin semua ni ada sebab. Mungkin I kena kehilangan you untuk belajar apa makna sebenar cinta.</p>
+
+<p>I still want you, but maybe not now. Maybe one day, when I’ve healed completely, when I can love without fear, when I can stay without running. And if by that time our paths ever cross again, I’ll hold your hand differently: dengan tenang, dengan penuh cinta, dengan segala yang I tak sempat bagi dulu.</p>
+
+<p>Tapi kalau hari tu tak pernah datang pun, it's okay. Because you’ll always be a part of me. You’ll always be my lesson, my reason, my once-in-a-lifetime.</p>
+
+<p>So this is my goodbye. Not because I stopped loving you, tapi sebab I dah belajar yang cinta sebenar kadang-kadang bermaksud melepaskan. Melepaskan dengan membenarkan you mencari your own happiness, kebahagiaan yang mungkin you tak sempat rasa masa dengan I dulu.</p>
+
+<p>And if one day you ever need me, even just as a friend, you can always reach me. Sebab apa pun jadi, you pernah jadi tulang belakang I, cinta hati I, dan kawan terbaik I.</p>
+
+<p>Kalau masa boleh diulang, I’d still choose you every single time. Tapi sekarang I pilih untuk sembuh dan perbaiki diri I, dan biar you bahagia, walaupun bukan dengan I. Sebab I percaya satu hari nanti, you akan betul-betul bahagia. Dan itu pun dah cukup untuk I.</p>
+        <p class="sig">— Hans, once yours.</p>
+      </article>
+    </section>
+  </div>
+
+  <script>
+    // audio: fade in when unlocking
+    const bgm = document.getElementById('bgm');
+    const card = document.getElementById('card');
+    const key = document.getElementById('key');
+    const openBtn = document.getElementById('openBtn');
+
+    function fadeInAudio(){
+      bgm.volume = 0;
+      bgm.muted = false; // unmute
+      try { bgm.currentTime = 0; bgm.play(); } catch(e) {}
+      let v = 0;
+      const t = setInterval(()=>{ 
+        v += 0.05; 
+        bgm.volume = Math.min(1, v); 
+        if(v >= 1) clearInterval(t); 
+      }, 80);
+    }
+
+    function unlock(){
+      card.classList.add('show');    // reveal letter
+      fadeInAudio();                 // start music
+      card.scrollTop = 0;
+    }
+
+    function tryOpen(){ unlock(); }
+
+    openBtn.addEventListener('click', tryOpen);
+    key.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ tryOpen(); }});
+  </script>
+</body>
+</html>
